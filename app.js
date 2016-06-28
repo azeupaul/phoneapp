@@ -2,7 +2,7 @@ $(function(){
 	var app = {};
 
 	//Models 
-	var App.Contact = Backbone.Model.extend({
+	app.Contact = Backbone.Model.extend({
 		defaults: {
 			name: 'contact ...',
 			phonenumber: 99999999,
@@ -11,7 +11,7 @@ $(function(){
 	});
 
 	// Collections
-	var App.ContactList = Backbone.Collection.extend({
+	app.ContactList = Backbone.Collection.extend({
 		model: app.Contact,
 		//Save all contact on contact-backbone namespace
 		localStorage: new Backbone.LocalStorage("contact-backbone"),
