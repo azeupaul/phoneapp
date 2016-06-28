@@ -7,7 +7,23 @@
     </head>
     <body>
         <!-- HTML -->
-        <div id="container">Initialisation</div>
+        <div id="phoneapp">
+            <header>
+                <h1>Contact</h1>
+                <input id="name" type="text" placeholder="Name contact">
+                <input id="phone" type="text" placeholder="Phonenumber contact">
+                <button type="button" id="save">Save</button>
+            </header>
+
+            <section id="main">
+                <input id="toggle-all" type="checkbox">
+                <label for="toggle-all">Add all in fav</label>
+                <ul id="contact-list"></ul>
+            </section>
+
+            <footer>
+            </footer>
+        </div>
         
         <!-- Libraries -->
         <script src="libs/jquery-1.11.2.min.js" type="text/javascript"></script>
