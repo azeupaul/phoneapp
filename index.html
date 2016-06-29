@@ -31,5 +31,13 @@
         <script src="libs/backbone.js" type="text/javascript"></script>
         <script src="libs/backbone-localstorage.js" type="text/javascript"></script> 
         <script src="app.js" type="text/javascript"></script>
+
+        <!-- Templates -->
+        <script type="text/template" id="item-template">
+            <div class="view">
+                <input class="toggle" type="checkbox" />
+                <label><%- name %> - <%- phonenumber %></label>
+            </div>
+        </script>
     </body>
 </html>
