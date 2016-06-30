@@ -25,11 +25,7 @@ $(function(){
 		render: function(){
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
-		},
-        initialize: function(){
-            this.model.on('change', this.render, this);
-            this.model.on('destroy', this.remove, this); // remove: Convenience Backbone'
-        }
+		}
 	});
 
 	app.AppView = Backbone.View.extend({
