@@ -7,7 +7,10 @@ $(function(){
 			name: 'contact ...',
 			phonenumber: 99999999,
 			favorite: false
-		}
+		},
+        toggle: function(){
+            this.save({ favorite: !this.get('favorite')});
+        }
 	});
 
 	// Collections
@@ -25,7 +28,21 @@ $(function(){
 		render: function(){
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
-		}
+		},
+        initialize: function(){
+            this.model.on('change', this.render, this);
+            this.model.on('destroy', this.remove, this); // remove: Convenience Backbone'
+        },
+        events: {
+            'click .toggle': 'toggleFav',
+            'click .destroy': 'destroy'
+        },
+        toggleFav: function(){
+            this.model.toggle();
+        },
+        destroy: function(){
+            this.model.destroy();
+        }
 	});
 
 	app.AppView = Backbone.View.extend({
