@@ -54,7 +54,8 @@ $(function(){
             app.contactList.fetch(); // Loads list from local storage
         },
         events: {
-            'click #save': 'createContact'
+            'click #save': 'createContact',
+            "click #toggle-all": "toggleAllFav"
         },
         createContact: function(e){
             if (!this.$('#name').val().trim() || !this.$('#phone').val().trim()) { 
@@ -79,6 +80,10 @@ $(function(){
                 phonenumber: this.$('#phone').val().trim(),
                 favorite: false
             }
+        },
+        toggleAllComplete: function () {
+            var favorite = this.allCheckbox.checked;
+            app.ContactList.each(function (contact) { contact.save({'favorite': favorite}); });
         }
     });
 
