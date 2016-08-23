@@ -57,7 +57,7 @@ $(function(){
             'click #save': 'createContact',
             "click #toggle-all": "toggleAllFav"
         },
-        createContact: function(e){
+        createContact: function(){
             if (!this.$('#name').val().trim() || !this.$('#phone').val().trim()) { 
                 return;
             }
@@ -79,7 +79,7 @@ $(function(){
                 name: this.$('#name').val().trim(),
                 phonenumber: this.$('#phone').val().trim(),
                 favorite: false
-            }
+            };
         },
         toggleAllComplete: function () {
             var favorite = this.allCheckbox.checked;
