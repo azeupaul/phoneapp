@@ -1,9 +1,32 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
-/* Padding below the footer and lighter body text */
+.app-header {
+    position: relative;
+    padding: 30px 15px;
+    font-size: 20px;
+    color: #5f4529;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    background-color: #5cb85c;
+    background-repeat: repeat-x;
+}
 
-body {
-    padding-top: 50px;
-    padding-bottom: 40px;
-    color: #5a5a5a;
+.app-header h1 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.app-header p {
+    margin-bottom: 0;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.app-footer{
+    position: fixed;
+    bottom: 0px;
+}
+
+.app-footer p{
+    text-align: center;
 }
