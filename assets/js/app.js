@@ -1,34 +1,33 @@
 $(function(){
-	var app = {};
+    var app = {};
+    var restUrl = "http://localhost/contact/web/app_dev.php/contacts";
 
-	//Models 
-	app.Contact = Backbone.Model.extend({
-		defaults: {
-			name: 'contact ...',
-			phonenumber: 99999999,
-			favorite: false
-		},
-        toggle: function(){
-            this.save({ favorite: !this.get('favorite')});
+    //Models 
+    app.Contact = Backbone.Model.extend({
+        urlRoot: restUrl,
+        defaults: {
+            name: 'contact ...',
+            phoneNumber: "",
+            email: "",
+            favorite: false
         }
-	});
+    });
 
-	// Collections
-	app.ContactList = Backbone.Collection.extend({
-		model: app.Contact,
-		//Save all contact on contact-backbone namespace
-		localStorage: new Store("contact-backbone"),
-	});
+    // Collections
+    app.ContactList = Backbone.Collection.extend({
+        model: app.Contact,
+        url: restUrl
+    });
 
-	app.contactList = new app.ContactList();
+    app.contactList = new app.ContactList();
 
-	app.ContactView = Backbone.View.extend({
-		tagName: 'li',
-		template: _.template($('#item-template').html()),
-		render: function(){
-			this.$el.html(this.template(this.model.toJSON()));
-			return this;
-		},
+    app.ContactView = Backbone.View.extend({
+        tagName: 'li',
+        template: _.template($('#item-template').html()),
+        render: function(){
+            this.$el.html(this.template(this.model.toJSON()));
+            return this;
+        },
         initialize: function(){
             this.model.on('change', this.render, this);
             this.model.on('destroy', this.remove, this); // remove: Convenience Backbone'
@@ -43,11 +42,11 @@ $(function(){
         destroy: function(){
             this.model.destroy();
         }
-	});
+    });
 
-	app.AppView = Backbone.View.extend({
+    app.AppView = Backbone.View.extend({
         el: '#phoneapp',
-        initialize: function () {
+        initialize: function () {console.log("start");
             // when new elements are added to the collection render then with addOne
             app.contactList.on('add', this.addOne, this);
             app.contactList.on('reset', this.addAll, this);
