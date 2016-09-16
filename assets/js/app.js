@@ -23,7 +23,7 @@ $(function(){
 
     app.ContactView = Backbone.View.extend({
         tagName: 'li',
-        className: 'media col-md-6 col-lg-4',
+        className: 'media col-md-4 col-lg-3',
         template: _.template($('#item-contact').html()),
         render: function(){
             this.$el.html(this.template(this.model.toJSON()));
