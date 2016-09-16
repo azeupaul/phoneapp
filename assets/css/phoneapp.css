@@ -1,5 +1,6 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
+/********** HEADER **********/
 .app-header {
     position: relative;
     padding: 30px 15px;
@@ -22,11 +23,57 @@
     line-height: 1.4;
 }
 
+/********** FOOTER **********/
 .app-footer{
     position: fixed;
     bottom: 0px;
+    right: 0px;
+    left: 0px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    background-color: #5cb85c;
+    background-repeat: repeat-x;
 }
 
 .app-footer p{
     text-align: center;
+}
+
+/********** LIST CONTACT **********/
+.media-list {
+  text-align: center;
+}
+
+@media (min-width: 450px) {
+  .media-list {
+    text-align: left;
+  }
+}
+
+.media:first-child {
+  margin-top: 15px;
+}
+
+/********** OTHERS **********/
+.btn-outline {
+  color: #563d7c;
+  background-color: transparent;
+  border-color: #563d7c;
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
+  color: #fff;
+  background-color: #563d7c;
+  border-color: #563d7c;
+}
+
+a {
+  color: #563d7c;
+}
+
+a:hover,
+a:focus {
+  color: #1d1429;
 }
