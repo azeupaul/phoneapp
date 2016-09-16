@@ -15,31 +15,15 @@
                 <p>Simple application to learn backboneJs</p>
             </div>
         </header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="phoneapp">
-                        <header>
-                            <h1>Contact</h1>
-                            <input class="form-control" id="name" type="text" placeholder="Name contact">
-                            <input class="form-control" id="phone" type="text" placeholder="Phonenumber contact">
-                            <button class="btn btn-primary" type="button" id="save">Save</button>
-                        </header>
-            
-                        <section id="main">
-                            <input id="toggle-all" type="checkbox">
-                            <label for="toggle-all">Add all in fav</label>
-                            <ul id="contact-list"></ul>
-                        </section>
-                    </div>
-                </div>
+        <div class="container" id="phoneapp">
+            <div class="row main-container">
+                
             </div>
             
             <footer class="app-footer">
                 <p>PhoneApp © 2016</p>
             </footer>
         </div>
-        <div class="container">
         <!-- HTML -->
         <!-- Libraries -->
         <script src="assets/libs/jquery-1.11.2.min.js" type="text/javascript"></script>
@@ -56,6 +40,27 @@
                 <button class="edit btn btn-primary">Edit</button>
                 <button class="destroy btn btn-danger">Remove</button>
             </div>
+        </script>
+        <script type="text/template" id="list-contacts">
+            <h2 class="page-header text-center">List of contacts</h2>
+            <p class="text-center">
+                <a href="#contacts/new" class="btn btn-lg btn-primary btn-outline">Add Contact</a>
+            </p>
+            <ul class="media-list row contacts-container"></ul>
+        </script>
+        <script type="text/template" id="item-contact">
+            <div class="media-heading">
+                <h3><%- name %></h3>
+            </div>
+            <div class="media-body">
+                <dl>
+                    <dt>Phone Number:</dt>
+                    <dd><%- phoneNumber %></dd>
+                    <dt>Email:</dt>
+                    <dd><%- email %></dd>
+                </dl>
+            </div>
+            <hr>
         </script>
     </body>
 </html>
