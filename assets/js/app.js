@@ -19,8 +19,6 @@ $(function(){
         url: restUrl
     });
 
-    //app.contactList = new app.ContactList();
-
     app.ContactView = Backbone.View.extend({
         tagName: 'li',
         className: 'media col-md-4 col-lg-3',
@@ -46,6 +44,35 @@ $(function(){
         }
     });
 
+    app.newContact = Backbone.View.extend({
+        template: _.template($('#tpl-new-contact').html()),
+        render: function() {
+            var html = this.template(_.extend(this.model.toJSON(), {
+                isNew: this.model.isNew()
+            }));
+            this.$el.append(html);
+            
+            return this;
+        },
+        events: {
+            'submit .contact-form': 'onFormSubmit'
+        },
+        
+        /* ... */
+        
+        onFormSubmit: function(e) {
+            e.preventDefault();
+            
+            this.trigger('form:submitted', {
+                name: this.$('.contact-name-input').val(),
+                tel: this.$('.contact-tel-input').val(),
+                email: this.$('.contact-email-input').val()
+            });
+        }
+    })
+
+    app.contactList = new app.ContactList();
+
     app.Router = Backbone.Router.extend({
         routes:{
             "":"showContacts",
@@ -54,7 +81,7 @@ $(function(){
             "contact/:id": "contactDetails"
         },
         showContacts:function () {
-            this.contactList = new app.ContactList();
+            this.contactList = app.contactList;
             var self = this;
             this.contactList.fetch({
                 success:function () {
@@ -65,7 +92,14 @@ $(function(){
             });
         },
         newContact: function(){
-            console.log('add contact here');
+            var newContactForm = new app.newContact({
+                model: new app.Contact()
+            });
+            newContactForm.on('form:submitted', function(attrs) {
+                app.contactList.add(attrs);
+                app.start.navigate('contacts', true);
+            });
+            $('.main-container').html(newContactForm.render().$el);
         },
         contactDetails: function(){
             console.log('Contact details');
