@@ -1,6 +1,6 @@
 $(function(){
     var app = {};
-    var restUrl = "http://localhost/contact/web/app_dev.php/contacts";
+    var restUrl = "http://localhost/contactAPI/web/app_dev.php/contacts";
 
     //Models 
     app.Contact = Backbone.Model.extend({
